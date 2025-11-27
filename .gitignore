@@ -1,0 +1,17 @@
+# --- Godot 4+ (Muy Importante) ---
+.godot/
+
+# --- Godot 3 (Legacy) ---
+.import/
+
+# --- Archivos generados / Logs ---
+logs/
+*.translation
+
+# --- Configuración de exportación (Opcional pero recomendado) ---
+# Evita subir rutas o claves privadas si exportas a Android/iOS
+export_presets.cfg
+
+# --- Archivos del sistema operativo (Basura) ---
+.DS_Store
+Thumbs.db
