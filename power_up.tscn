@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://w5ihr2wdrfna"]
+
+[ext_resource type="Script" uid="uid://cvoglmbiqjqvn" path="res://power_up.gd" id="1_lbdsv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mkoic"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_h1prs"]
+
+[node name="PowerUp" type="Area3D"]
+script = ExtResource("1_lbdsv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_mkoic")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("SphereMesh_h1prs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
