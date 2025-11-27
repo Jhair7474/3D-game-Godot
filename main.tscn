@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://2wap0283yk0r"]
+[gd_scene load_steps=13 format=3 uid="uid://2wap0283yk0r"]
 
 [ext_resource type="Script" uid="uid://cfb7xo35cn5fo" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ceuu150fmggvr" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://defdm2qdva75q" path="res://mob.tscn" id="2_h2yge"]
 [ext_resource type="FontFile" uid="uid://cyxhh7ddkn62q" path="res://fonts/Montserrat-Medium.ttf" id="4_lquwl"]
-[ext_resource type="Script" path="res://score_label.gd" id="5_7mycd"]
+[ext_resource type="Script" uid="uid://bq4lq2wbf1rkc" path="res://score_label.gd" id="5_7mycd"]
+[ext_resource type="PackedScene" uid="uid://djm68tgfmo1la" path="res://pause_menu.tscn" id="6_7mycd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
 size = Vector3(60, 2, 60)
@@ -131,6 +132,8 @@ offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Press Enter to retry"
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_7mycd")]
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
