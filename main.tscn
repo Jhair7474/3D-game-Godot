@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://2wap0283yk0r"]
+[gd_scene load_steps=14 format=3 uid="uid://2wap0283yk0r"]
 
 [ext_resource type="Script" uid="uid://cfb7xo35cn5fo" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ceuu150fmggvr" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://defdm2qdva75q" path="res://mob.tscn" id="2_h2yge"]
 [ext_resource type="FontFile" uid="uid://cyxhh7ddkn62q" path="res://fonts/Montserrat-Medium.ttf" id="4_lquwl"]
-[ext_resource type="Script" uid="uid://bq4lq2wbf1rkc" path="res://score_label.gd" id="5_7mycd"]
-[ext_resource type="PackedScene" uid="uid://djm68tgfmo1la" path="res://pause_menu.tscn" id="6_7mycd"]
+[ext_resource type="Script" path="res://score_label.gd" id="5_7mycd"]
+[ext_resource type="Texture2D" uid="uid://jflr4t7annj7" path="res://heart.png" id="6_7mycd"]
+[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="7_272bh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
 size = Vector3(60, 2, 60)
@@ -133,7 +134,31 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Press Enter to retry"
 
-[node name="PauseMenu" parent="." instance=ExtResource("6_7mycd")]
+[node name="LivesContainer" type="HBoxContainer" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="UserInterface/LivesContainer"]
+layout_mode = 2
+texture = ExtResource("6_7mycd")
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="UserInterface/LivesContainer"]
+layout_mode = 2
+texture = ExtResource("6_7mycd")
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="UserInterface/LivesContainer"]
+layout_mode = 2
+texture = ExtResource("6_7mycd")
+stretch_mode = 5
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_272bh")]
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
