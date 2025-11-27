@@ -24,7 +24,7 @@ func initialize(start_position, player_position):
 	# We then rotate the velocity vector based on the mob's Y rotation
 	# in order to move in the direction the mob is looking.
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
-)
+
 
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
 	pass # Replace with function body.
