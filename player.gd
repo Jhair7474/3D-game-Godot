@@ -85,4 +85,10 @@ func die():
 	queue_free()
 
 func _on_mob_detector_body_entered(body):
-	die()
+# Emitimos la señal de que fuimos golpeados
+	hit.emit()
+	
+	# IMPORTANTE: Destruimos al enemigo que nos tocó.
+	# Si no hacemos esto, el enemigo sigue tocando al jugador y
+	# perderás las 3 vidas en menos de un segundo.
+	body.queue_free()
