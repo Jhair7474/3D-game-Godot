@@ -7,6 +7,13 @@ extends CharacterBody3D
 
 func _physics_process(_delta):
 	move_and_slide()
+	
+# Emitted when the player jumped on the mob.
+signal squashed
+
+func squash():
+	squashed.emit()
+	queue_free()
 
 # This function will be called from the Main scene.
 func initialize(start_position, player_position):
