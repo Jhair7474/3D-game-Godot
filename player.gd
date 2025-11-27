@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 signal hit
 
-# How fast the player moves in meters per second
+# How fast the player moves in meters per second.
 @export var speed = 14
 # The downward acceleration while in the air, in meters per second squared.
 @export var fall_acceleration = 75
@@ -31,18 +31,21 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_forward"):
 		direction.z = direction.z - 1
 
-	# Prevent diagonal moving fast af
+	# Prevent diagonal movement being very fast
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
 		# Setting the basis property will affect the rotation of the node.
 		$Pivot.basis = Basis.looking_at(direction)
+		$AnimationPlayer.speed_scale = 4
+	else:
+		$AnimationPlayer.speed_scale = 1
 
 	# Ground Velocity
 	target_velocity.x = direction.x * speed
 	target_velocity.z = direction.z * speed
 
 	# Vertical Velocity
-	if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
+	if not is_on_floor(): # If in the air, fall towards the floor
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 
 	# Jumping.
@@ -73,6 +76,8 @@ func _physics_process(delta):
 	# Moving the Character
 	velocity = target_velocity
 	move_and_slide()
+
+	$Pivot.rotation.x = PI / 6 * velocity.y / jump_impulse
 
 # And this function at the bottom.
 func die():
